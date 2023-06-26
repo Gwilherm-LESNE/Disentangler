@@ -400,7 +400,7 @@ if __name__=='__main__':
     parser.add_argument("-dl", '--disentanglement_loss', metavar = 'Disentanglement_loss',
                         help = "Disentangement loss to use. It can be 'Correlation' to force disentanglement or 'CorrelationPenalised' to take into account natural correlations",
                         type=str, default = 'Correlation')
-    parser.add_argument("-ai", '--attribute_indexes', metavar = 'attribute_indexes', help = "attribute indexes to take into account for attribute loss and disentanglement loss.", nargs="+", type=int,  default = list(np.arange(40)))
+    parser.add_argument("-ai", '--attribute_indices', metavar = 'attribute_indices', help = "attribute indices to take into account for attribute loss and disentanglement loss.", nargs="+", type=int,  default = None)
     parser.add_argument("-df", '--data_folder', metavar = 'data_folder', help = "Folder path where to find the data files (data.pkl and label.pkl)", type=str,  default = './data/latent_attributes_dataset_gauss/')
     parser.add_argument("-sp", '--save_path', metavar = 'save_path', help = "Path where to save the model", type=str,  default = './models/disentangler/')
     args = parser.parse_args()
@@ -408,4 +408,7 @@ if __name__=='__main__':
     if not args.disentanglement_loss in ['Correlation','CorrelationPenalised']:
         raise ValueError("-dl (--disentanglement_loss) provided must be 'Correlation' or 'CorrelationPenalised'.")
     
+    if args.attribute_indices is None:
+        args.attribute_indices = torch.load(os.path.join(args.data_folder,'label.pkl')).shape[1]
+        
     main_function(args)

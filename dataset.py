@@ -6,6 +6,7 @@ import torch
 import class_utils as cu
 import pandas as pd
 import os
+import argparse
 
 #%%
   
@@ -114,7 +115,7 @@ class DistributionTransformer():
         else:
             raise ValueError(" 'data' doesn't have the right type, it is supposed to be Tensor or cu.LADataset instance while it's currently: "+ str(data.__class__))        
         
-def create_gaussian_dataset(dataset, save_path='./data/latent_attributes_dataset_gauss/'):
+def create_gaussian_dataset(dataset, save_path = './data/latent_attributes_dataset_gauss/'):
     """
     Gaussianize a given dataset and store at the path provided in arguments.
 
@@ -140,3 +141,17 @@ def create_gaussian_dataset(dataset, save_path='./data/latent_attributes_dataset
         os.mkdir(save_path)
     label.to_pickle(os.path.join(save_path,'label.pkl'))
     data.to_pickle(os.path.join(save_path,'data.pkl'))
+    
+if __name__=='__main__':
+    
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('dataset_folder', metavar = 'dataset_folder', help = "Folder path where to find the raw dataset files (data.pkl and label.pkl)", type=str)
+    parser.add_argument("-s", '--save_path', metavar = 'save_path', help = "Path where to save the gaussianzed dataset", type=str,  default = './data/latent_attributes_dataset_gauss/')
+    args = parser.parse_args()
+
+    raw_dataset = cu.LADataset(data_file = os.path.join(args.dataset_folder,'data.pkl'), 
+                                label_file = os.path.join(args.dataset_folder,'label.pkl'))
+    
+    create_gaussian_dataset(raw_dataset, save_path = args.save_path)
+    
