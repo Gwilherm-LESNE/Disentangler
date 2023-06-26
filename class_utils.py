@@ -98,7 +98,7 @@ class AugmentedMLP(nn.Module):
     
    
 class Disentangler(nn.Module):
-    def __init__(self, G_path='./models/ffhq.pkl', 
+    def __init__(self, G_path='./models/stylegan2.pkl', 
                  layer_nb = 8, 
                  batch_norm=True,
                  latent_size = None,
@@ -112,7 +112,7 @@ class Disentangler(nn.Module):
         ----------
         G_path : str, optional
             Path where to find the '.pkl' file containing the StyleGAN's weights.
-            The default is './models/ffhq.pkl'.
+            The default is './models/stylegan2.pkl'.
         layer_nb : int, optional
             Layer number for both the encoder and the decoder. The default is 8.
         batch_norm : bool, optional

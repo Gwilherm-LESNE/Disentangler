@@ -80,7 +80,7 @@ def w2Wp(w):
     return wplus
 
 class Editor():
-    def __init__(self, network, stylegan_path = './models/ffhq.pkl'):
+    def __init__(self, network, stylegan_path = './models/stylegan2.pkl'):
         
         self.net = network
         self.stylegan_path = stylegan_path
@@ -131,7 +131,7 @@ class Editor():
         return  None
             
 class WSampler():
-    def __init__(self, LADataset_path = './data/latent_attributes_dataset_gauss', stylegan_path = './models/ffhq.pkl'):
+    def __init__(self, LADataset_path = './data/latent_attributes_dataset_gauss', stylegan_path = './models/stylegan2.pkl'):
         super(WSampler, self).__init__()
         
         ladataset = cu.LADataset(data_file = os.path.join(LADataset_path,'data.pkl'), label_file = os.path.join(LADataset_path,'label.pkl'))

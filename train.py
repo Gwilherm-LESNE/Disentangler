@@ -102,7 +102,7 @@ def plot_results(targets, outputs):
         2*2 Figure where each cell represents the source image (left) and the network output image (right).
 
     """
-    with open('./models/ffhq.pkl','rb') as f:
+    with open('./models/stylegan2.pkl','rb') as f:
         Gan = pickle.load(f)['G_ema'].cuda()
     
     if targets.shape[1]==512:
