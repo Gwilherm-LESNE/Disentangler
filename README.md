@@ -1,4 +1,4 @@
-# A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing
+# A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing (CVMP 2023)
 
 Official implementation of the paper *A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing*
 
