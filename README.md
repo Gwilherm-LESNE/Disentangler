@@ -1,6 +1,6 @@
 # A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing (CVMP 2023)
 
-Official implementation of the paper *A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing*
+Official implementation of the paper [*A Compact and Semantic Latent Space for Disentangled and Controllable Image Editing*](https://dl.acm.org/doi/10.1145/3626495.3626508)
 
 ![Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg)
 ![pytorch 1.12.1](https://img.shields.io/badge/Pytorch-1.12.0-blue.svg)
